@@ -5,8 +5,20 @@ extension MainPageAdapter {
     return self.page?.getWidgetByName("rowView1") as! SCDWidgetsRowView
   }
 
-  var playStopButton: SCDWidgetsButton {
-    return self.page?.getWidgetByName("playStopButton") as! SCDWidgetsButton
+  var image2: SCDWidgetsImage {
+    return self.page?.getWidgetByName("image2") as! SCDWidgetsImage
+  }
+
+  var image3: SCDWidgetsImage {
+    return self.page?.getWidgetByName("image3") as! SCDWidgetsImage
+  }
+
+  var sliderLine1: SCDWidgetsSliderLine {
+    return self.page?.getWidgetByName("sliderLine1") as! SCDWidgetsSliderLine
+  }
+
+  var playStopButton: SCDWidgetsImage {
+    return self.page?.getWidgetByName("playStopButton") as! SCDWidgetsImage
   }
 
   var rowView2: SCDWidgetsRowView {
@@ -19,21 +31,5 @@ extension MainPageAdapter {
 
   var sldrPosition: SCDWidgetsSliderLine {
     return self.page?.getWidgetByName("sldrPosition") as! SCDWidgetsSliderLine
-  }
-
-  var rowView3: SCDWidgetsRowView {
-    return self.page?.getWidgetByName("rowView3") as! SCDWidgetsRowView
-  }
-
-  var sliderLine2: SCDWidgetsSliderLine {
-    return self.page?.getWidgetByName("sliderLine2") as! SCDWidgetsSliderLine
-  }
-
-  var button1: SCDWidgetsButton {
-    return self.page?.getWidgetByName("button1") as! SCDWidgetsButton
-  }
-
-  var button2: SCDWidgetsButton {
-    return self.page?.getWidgetByName("button2") as! SCDWidgetsButton
   }
 }
