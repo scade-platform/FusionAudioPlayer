@@ -27,7 +27,7 @@ class MainPageAdapter: SCDLatticePageAdapter {
     self.sldrPosition.onSlide { e in self.onPositionChanged(ev: e) }
 
 	// setup stop/play button
-    self.playStopButton.onClick { _ in print("clicked") ; self.playStopButtonClicked() }
+    self.playStopButton.onClick { _ in self.playStopButtonClicked() }
 
 	// configure date component
     self.dateComponent.allowedUnits = [.minute, .second]
@@ -57,10 +57,9 @@ class MainPageAdapter: SCDLatticePageAdapter {
 
     // toggle state and change button accordingly
     self.isPlaying = !self.isPlaying
-    let image = isPlaying ? playImage : stopImage
-    print(image)
-    self.playStopButton.backgroundImage = image
-
+    let imageUrl = isPlaying ? playImage : stopImage
+    self.playStopButton.url = imageUrl
+    
   }
 
 }
