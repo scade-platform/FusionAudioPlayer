@@ -13,8 +13,8 @@ extension MainPageAdapter {
     return self.page?.getWidgetByName("image3") as! SCDWidgetsImage
   }
 
-  var sliderLine1: SCDWidgetsSliderLine {
-    return self.page?.getWidgetByName("sliderLine1") as! SCDWidgetsSliderLine
+  var sldrVolume: SCDWidgetsSliderLine {
+    return self.page?.getWidgetByName("sldrVolume") as! SCDWidgetsSliderLine
   }
 
   var playStopButton: SCDWidgetsImage {

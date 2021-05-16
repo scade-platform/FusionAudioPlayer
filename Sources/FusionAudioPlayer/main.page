@@ -21,7 +21,7 @@
           <maxSize xsi:type="graphics:Dimension" width="-1" height="-1"/>
         </layoutData>
       </children>
-      <children xsi:type="widgets:SliderLine" position="50" name="sliderLine1">
+      <children xsi:type="widgets:SliderLine" position="50" name="sldrVolume">
         <location xsi:type="graphics:Point" x="47" y="5"/>
         <size xsi:type="graphics:Dimension" width="239" height="100"/>
         <layoutData xsi:type="layout:GridData" column="1" verticalAlignment="MIDDLE" heightConstraint="MATCH_PARENT" widthConstraint="MATCH_PARENT" grabVerticalSpace="true" grabHorizontalSpace="true">
@@ -48,7 +48,7 @@
       </layoutData>
     </children>
     <children xsi:type="widgets:RowView" name="rowView2">
-      <children xsi:type="widgets:Label" text="02:30" name="lblPlayPosition" horizontalAlignment="CENTER">
+      <children xsi:type="widgets:Label" horizontalAlignment="CENTER" name="lblPlayPosition">
         <font xsi:type="graphics:Font" fontFamily="ArialMT" size="12">
           <color xsi:type="graphics:RGB" Red="70" Green="70" Blue="70"/>
         </font>
