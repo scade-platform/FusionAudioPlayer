@@ -19,7 +19,6 @@ class MainPageAdapter: SCDLatticePageAdapter {
   let maxVolume = 100
   var duration: Double = 180
 
-  var isPlaying = true
   var timer:Timer!
 //  var dateComponent = DateComponentsFormatter()
 
@@ -30,19 +29,14 @@ class MainPageAdapter: SCDLatticePageAdapter {
 	//setup player
     self.player = FusionMedia.AudioPlayer(url: URL(forResource: "Assets/Ketsa-Good_Vibe.mp3"))
     
-	// setup seek slider
+	// setup slider
 	if let player = self.player {
-	  duration = player.getDuration()
-      self.sldrPosition.maxValue = Int(duration)
+      self.sldrPosition.maxValue = Int(player.duration)
+      self.sldrVolume.maxValue = maxVolume
+      self.sldrVolume.position = Int(player.volume * Float(maxVolume))
 	}
 
     self.sldrPosition.onSlide { e in self.onPositionChanged(ev: e) }
-    
-    // setup volume slider
-    self.sldrVolume.maxValue = maxVolume
- 	if let player = self.player {
-      self.sldrVolume.position = Int(player.getVolume() * Float(maxVolume))
-    }
 	self.sldrVolume.onSlide { e in self.onVolumeChanged(ev: e) }
 	
 	// setup stop/play button
@@ -60,13 +54,13 @@ class MainPageAdapter: SCDLatticePageAdapter {
 //    if let sliderPositionMinutesSeconds = self.dateComponent.string(from: sliderPosition) {
 //     self.lblPlayPosition.text = sliderPositionMinutesSeconds
 //    }
-	player?.setProgress(Float(sliderPosition / self.duration))
+	player?.seek(to: sliderPosition)
   }
 
   func onVolumeChanged(ev: SCDWidgetsSliderLineEvent?) {
     let sliderPosition = ev!.newValue
 
-	player?.setVolume(Float(sliderPosition) / Float(self.maxVolume))
+	player?.volume = Float(sliderPosition) / Float(self.maxVolume)
   }
   
   func canChangeState() -> Bool {
@@ -75,20 +69,17 @@ class MainPageAdapter: SCDLatticePageAdapter {
 
   func playStopButtonClicked() {
 
-    if !canChangeState() {
-      return
-    }
+    guard let player = player else { return }
 
     // toggle state and change button accordingly
-    self.isPlaying = !self.isPlaying
-    let imageUrl = isPlaying ? playImage : stopImage
+
+    let imageUrl = player.isPlaying ? playImage : stopImage
     self.playStopButton.url = imageUrl
-	isPlaying ? self.player?.stop() : self.player?.play()
+	player.isPlaying ? player.stop() : player.play()
 	
-	guard let player = player else { return }
 	timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-        self.sldrPosition.position = Int(Double(player.getProgress()) * self.duration)
-        if !player.isPlaying() {
+        self.sldrPosition.position = Int(player.currentTime)
+        if !player.isPlaying {
             timer.invalidate()
         }
 	}
