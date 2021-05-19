@@ -13,8 +13,8 @@ extension MainPageAdapter {
     return self.page?.getWidgetByName("image3") as! SCDWidgetsImage
   }
 
-  var sldrVolume: SCDWidgetsSliderLine {
-    return self.page?.getWidgetByName("sldrVolume") as! SCDWidgetsSliderLine
+  var volumeSlide: SCDWidgetsSliderLine {
+    return self.page?.getWidgetByName("volumeSlide") as! SCDWidgetsSliderLine
   }
 
   var playStopButton: SCDWidgetsImage {
@@ -25,11 +25,11 @@ extension MainPageAdapter {
     return self.page?.getWidgetByName("rowView2") as! SCDWidgetsRowView
   }
 
-  var lblPlayPosition: SCDWidgetsLabel {
-    return self.page?.getWidgetByName("lblPlayPosition") as! SCDWidgetsLabel
+  var playPositionLabel: SCDWidgetsLabel {
+    return self.page?.getWidgetByName("playPositionLabel") as! SCDWidgetsLabel
   }
 
-  var sldrPosition: SCDWidgetsSliderLine {
-    return self.page?.getWidgetByName("sldrPosition") as! SCDWidgetsSliderLine
+  var positionSlide: SCDWidgetsSliderLine {
+    return self.page?.getWidgetByName("positionSlide") as! SCDWidgetsSliderLine
   }
 }

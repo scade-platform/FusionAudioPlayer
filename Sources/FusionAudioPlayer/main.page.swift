@@ -31,13 +31,13 @@ class MainPageAdapter: SCDLatticePageAdapter {
     
 	// setup slider
 	if let player = self.player {
-      self.sldrPosition.maxValue = Int(player.duration)
-      self.sldrVolume.maxValue = maxVolume
-      self.sldrVolume.position = Int(player.volume * Float(maxVolume))
+      self.positionSlide.maxValue = Int(player.duration)
+      self.volumeSlide.maxValue = maxVolume
+      self.volumeSlide.position = Int(player.volume * Float(maxVolume))
 	}
 
-    self.sldrPosition.onSlide { e in self.onPositionChanged(ev: e) }
-	self.sldrVolume.onSlide { e in self.onVolumeChanged(ev: e) }
+    self.positionSlide.onSlide { e in self.onPositionChanged(ev: e) }
+	self.volumeSlide.onSlide { e in self.onVolumeChanged(ev: e) }
 	
 	// setup stop/play button
     self.playStopButton.onClick { _ in self.playStopButtonClicked() }
@@ -78,7 +78,7 @@ class MainPageAdapter: SCDLatticePageAdapter {
 	player.isPlaying ? player.stop() : player.play()
 	
 	timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-        self.sldrPosition.position = Int(player.currentTime)
+        self.positionSlide.position = Int(player.currentTime)
         if !player.isPlaying {
             timer.invalidate()
         }
