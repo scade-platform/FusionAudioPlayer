@@ -20,12 +20,16 @@ let package = Package(
         )
     ],
     dependencies: [
-      
+      .package(name: "FusionMedia", url: "https://github.com/scade-platform/FusionMedia.git", .branch("main")),
+      .package(name: "ScadeExtensions", url: "https://github.com/scade-platform/ScadeExtensions.git", .branch("main"))
     ],
     targets: [
         .target(
             name: "FusionAudioPlayer",
-            dependencies: [],
+            dependencies: [
+            	.product(name: "FusionMedia", package: "FusionMedia"),
+            	.product(name: "ScadeExtensions", package: "ScadeExtensions")
+            ],
             exclude: ["main.page"],
             swiftSettings: [
                 .unsafeFlags(["-F", SCADE_SDK], .when(platforms: [.macOS, .iOS])),
